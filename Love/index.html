@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>THALA FOREVER💕</title>
+  <style type="text/css">
+    @font-face {
+      font-family: digit;
+      src: url('digital-7_mono.ttf') format("truetype");
+    }
+  </style>
+  <link href="default.css" type="text/css" rel="stylesheet">
+  
+ 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./garden.js"></script>
+  <script src="./functions.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<div id="mainDiv">
+  <div id="content">
+
+    <!-- Your original code div that has the poem and messages -->
+    <div id="code">
+      <!-- HIDE this whole poem initially with inline style -->
+      <span class="comments">/**</span><br />
+      <span class="space"/><span class="comments">*// THE SCRIPT OF US</span><br />
+      <span class="space"/><span class="comments">*/</span><br />
+      Hey Love! 💙!<br />
+      Do you remember the first time our eyes met? 🌟<br />
+      <span class="comments">// A random day that became so special.. </span><br />
+      In your arms, I’ve found my home. In your heart, I’ve found my forever;<br />
+      <span class="comments">// Everything feels like magic in my world..</span><br />
+      From strangers to soulmates, we’ve come so far. 💕<br />
+      and there will be more;<br />
+      More mornings where I wake up smiling beside you,<br />
+      More nights where your arms feel like the safest place on earth,<br />
+      More little moments that remind me just how lucky I am,<br />
+      To love you, and be loved by you — endlessly💙✨.<br />
+      <span class="comments">// No matter the distance or the days we part</span><br />
+      You’ll always have the key to my heart✨.<br />
+      <br><br>
+      All I want to say is:<br />
+      I will love you forever💙;<br />
+	   <p style="font-size: 20px; color:#ffffff;">
+      Now, if you want to hug me, you can touch the heart below 💙
+    </p>
+    <a href="./envelope.html" style="text-decoration: none;"><span id="hugHeart" style="cursor: pointer; font-size: 40px;">💙 </span></a>
+    </div>
+
+
+    <!-- Birthday message before clicking -->
+    <div id="birthdayMessage" style="font-size:28px; color:#1E90FF; text-align:center; margin-bottom:15px; margin-top:380px;">
+      Happy Birthday Harscini
+      <br>
+      <small style="font-size:18px; color:#555;">Click the heart for surprise 💙</small>
+    </div>
+
+    <!-- Heart emoji to click -->
+    <span id="heartspan" style="cursor:pointer; font-size:48px; color:#1E90FF; display:block; width:fit-content; margin: 0 auto 20px auto;">
+      <i class="fas fa-heart"></i>
+    </span>
+
+    <!-- Birthday message after clicking, hidden initially -->
+    <div id="loveHeart" style="margin-top:20px;">
+      <canvas id="garden"></canvas>
+      <div id="words">
+        <div id="messages">
+          HARSCINI FOREVER💙✨
+          <div id="elapseClock"></div>
+        </div>
+        <div id="loveu" style="display:none;">
+          I LOVE YOU SO MUCH MY GIRL<br/>
+          <div class="signature">- DHANU</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<audio id="loveSong" src="./ssvid.net--oh-oh-bgm-Aniruth-bgm-tamil-Tamil-love_360p.mp3" loop style="display:none;"></audio>
+
+<script>
+  // Hide poem initially
+  $("#code").hide();
+
+  var offsetX = $("#loveHeart").width() / 2;
+  var offsetY = $("#loveHeart").height() / 2 - 55;
+  var together = new Date(2024, 2, 13, 10, 0, 0, 0);
+
+  function startProgram() {
+    if (!document.createElement('canvas').getContext) {
+      var msg = document.createElement("div");
+      msg.id = "errorMsg";
+      msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+      document.body.appendChild(msg);
+      $("#code").css("display", "none");
+      document.execCommand("stop");
+      return;
+    }
+
+    startHeartAnimation();
+
+    timeElapse(together);
+    setInterval(function () {
+      timeElapse(together);
+    }, 500);
+
+    adjustCodePosition();
+    $("#code").typewriter();
+
+    const audio = document.getElementById('loveSong');
+    audio.muted = false;
+    audio.play();
+
+    // $("#loveu").show();
+  }
+
+   $("#heartspan").one("click", function() {
+    $("#birthdayMessage").hide();
+    $(this).hide(); // <-- hide the emoji after click
+	   let duration = 1 * 1000;
+  let end = Date.now() + duration;
+
+  let confettiInterval = setInterval(function () {
+    if (Date.now() > end) {
+      clearInterval(confettiInterval);
+      return;
+    }
+    confetti({
+      particleCount: 50,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }, 200);
+
+    $("#code").fadeIn();
+    $("#birthdayMessageAfterClick").fadeIn();
+    startProgram();
+  });
+  
+</script>
+
+</body>
+</html>
